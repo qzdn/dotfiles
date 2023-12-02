@@ -1,0 +1,55 @@
+[weather]
+command=curl -Ss 'https://wttr.in/Воронеж?format=3&lang=ru'
+interval=600
+color=#A4C2F4
+
+#[BATTERY]
+#command=~/.config/i3blocks/battery/battery_info.sh
+#interval=3
+
+[CPU_TEMP]
+#command=/home/tekkz/.config/i3blocks/cpu_info.sh
+command=sensors | grep "CPU Temperature" | awk '{print " \uf2c9 "$3 " "}'
+interval=3
+color=#00B4EB
+
+[GPU_TEMP]
+command=nvidia-settings -q GPUCoreTemp | grep -m 1 "Attribute 'GPUCoreTemp'" | awk '{print " \uf2c9 +" substr($4, 1, length($4)-1) "°C "}'
+interval=3
+color=#22FF22
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf(" \uf538 %5s/%s \n", $3, $2) }'
+interval=3
+color=#FEC925
+
+[DISK]
+command=df -h / | awk '/\//{ printf(" \uf0a0 %4s / %s \n", $4, $2) }'
+interval=5
+color=#C9E3DB
+
+[time]
+command=date "+ %d/%m/%Y %T "
+interval=5
+
+[volume-pipewire]
+command=/home/tekkz/.config/i3blocks/volume-pipewire
+interval=once
+signal=1
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+#AUDIO_HIGH_SYMBOL='  '
+#AUDIO_MED_THRESH=50
+#AUDIO_MED_SYMBOL='  '
+#AUDIO_LOW_THRESH=0
+#AUDIO_LOW_SYMBOL='  '
+#AUDIO_DELTA=5
+#DEFAULT_COLOR="#ffffff"
+#MUTED_COLOR="#a0a0a0"
+#USE_ALSA_NAME=0
+#USE_DESCRIPTION=0
+## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
+#SUBSCRIBE=0

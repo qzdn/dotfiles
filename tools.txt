@@ -1,5 +1,6 @@
 rofi - dmenu alternative
 mc, pcmanfm - file managers
-jetbrains-mono, ttf-font-awesome - fonts
+feh - image viewer+bg w/ i3
+ttf-jetbrains-mono, ttf-font-awesome - fonts
 pavucontrol, pasystray, playerctl - volume and media buttons control
 mangohud, goverlay - game monitoring

@@ -1,0 +1,17 @@
+# i3-wm, i3blocks - wm
+# alacritty - terminal
+# picom - compositor
+# rofi - dmenu alternative
+# mc, pcmanfm - file managers
+# feh - image viewer+bg w/ i3
+# ttf-jetbrains-mono-nerd, ttf-font-awesome - fonts
+# pipewire, pipewire-audio, pipewire-pulse, wireplumber - audio
+# pavucontrol, playerctl - volume and media buttons control
+# mangohud, goverlay - game monitoring
+# telegram-desktop, discord, steam, vlc, yt-dlp, streamlink - etc
+# 
+# AUR
+# yay - package manager
+# pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+# yewtube - yt in terminal
+# chatterino2-git - twitch chat

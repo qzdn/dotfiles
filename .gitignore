@@ -1,0 +1,14 @@
+cef_user_data/
+Code - OSS/
+dconf/
+gtk-3.0/
+ibus/
+lazygit/
+libfm/
+pcmanfm/
+pulse/
+yay/
+
+pavucontrol.ini
+user-dirs.dirs
+user-dirs.locale

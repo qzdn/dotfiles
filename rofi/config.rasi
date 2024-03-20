@@ -1,0 +1,5 @@
+configuration { 
+    font: "JetBrains Mono NL 11";
+}
+
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"

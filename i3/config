@@ -28,19 +28,19 @@ default_floating_border normal 1
 exec --no-startup-id dex --autostart --environment i3
 
 # Picom
-exec_always --no-startup-id picom -f
+exec --no-startup-id picom -f
 
 # Keyboard switcher on startup
-exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
+exec --no-startup-id setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
 
 # Set background
-exec_always --no-startup-id feh --bg-fill '/home/tekkz/Pictures/bg1.jpg'
+exec --no-startup-id feh --bg-fill '/home/tekkz/Pictures/bg1.jpg'
 
 # KB layout indicator
-exec_always --no-startup-id sbxkb
+exec --no-startup-id sbxkb
 
 # Volume indicator
-exec_always --no-startup-id volumeicon
+exec --no-startup-id volumeicon
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.

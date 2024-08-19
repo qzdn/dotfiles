@@ -1,0 +1,40 @@
+[CMUS]
+command=~/.config/scripts/cmus-status.sh; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg workspace 5
+interval=3
+#color=#CCCCCC
+
+[WEATHER]
+command=curl "wttr.in/VOZ?format=1" | sed 's/   / /' | awk '{print " " $0 " "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec chromium gismeteo.ru
+interval=300
+color=#A4C2F4
+
+[CPU_TEMP]
+command=sensors | grep "Tctl" | awk '{print " \uf2c9: "$2" "}'
+interval=5
+color=#FF5555
+
+[GPU_TEMP]
+#command=nvidia-settings -q GPUCoreTemp | grep -m 1 "Attribute 'GPUCoreTemp'" | awk '{print " \uf2c9 +" substr($4, 1, length($4)-1) "°C "}'
+command=nvidia-settings -q GPUCoreTemp -t | awk '{print " \uf2c9: +" $0 "°C "}'
+interval=5
+color=#22FF22
+
+[MEM]
+command=free -h | grep "Mem" | awk '{print "  \uf538: "$3"/"$2" "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec st htop
+interval=5
+color=#FEC925
+
+[DISK]
+command=df -h / | awk '/\//{ printf(" \uf0a0 : %s/%s \n", $4, $2) }'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec pcmanfm ~
+interval=30
+color=#CCCCCC
+
+[KB_LAYOUT]
+command=xset -q | grep LED | awk '{if ($10>2) print " [ru] "; else print " [us] ";}'
+interval=3
+color=#CCCCCC
+
+[TIME]
+command=date +" %d-%m-%Y :: %H:%M "; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
+interval=5
+color=#FFFFFF

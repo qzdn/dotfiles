@@ -1,6 +1,6 @@
-#[CMUS]
-#command=~/.config/cmus/now-playing.sh; [[ -z "${BLOCK_BUTTON}" ]] || cmus-remote -u 
-#interval=5
+[CMUS]
+command=~/.config/scripts/cmus-status.sh; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg workspace 5
+interval=3
 #color=#CCCCCC
 
 [WEATHER]
@@ -35,5 +35,7 @@ interval=2
 color=#CCCCCC
 
 [TIME]
-command=date +" %d-%m-%Y :: %H:%M "
+command=date +" %d-%m-%Y :: %H:%M "; [[ -z "${BLOCK_BUTTON}" ]] || st -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
 interval=5
+
+#gxmessage -center -title Calendar -font "JetBrainsMonoNL NF 14" "$(printf "%s" "$(cal -m -w -y)")"

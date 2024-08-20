@@ -11,6 +11,8 @@
 !.config/picom/picom.conf
 !.config/rofi/
 !.config/rofi/config.rasi
+!.config/scripts
+!.config/scripts/cmus-status.sh
 
 !.bash_profile
 !.bashrc

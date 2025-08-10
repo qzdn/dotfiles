@@ -8,9 +8,11 @@ alias grep='grep --color=auto'
 alias lss="ls -lahs --group-directories-first"
 PS1='[\u@\h \W]\$ '
 
-setxkbmap -layout us,ru -option grp:alt_shift_toggle
-eval `keychain --noask --quiet --eval gh_main_arch`
+export EDITOR='/usr/bin/vim'
 
-# del key workaround in st terminal (bash)
-#printf '\033[?1h\033=' >/dev/tty
-#tput smkx 
+if ! ps -ef | grep "[s]sh-agent" &>/dev/null; then
+  eval $(ssh-agent -s)
+fi
+
+#setxkbmap -layout us,ru -option grp:alt_shift_toggle
+#eval $(keychain --eval --noask ~/.ssh/gh_laptop_arch)

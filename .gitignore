@@ -1,5 +1,7 @@
 *
 
+!.ssh/
+!.ssh/config
 !.config/
 !.config/alacritty/
 !.config/alacritty/alacritty.toml
@@ -18,6 +20,7 @@
 !.config/rofi/config.rasi
 !.config/scripts
 !.config/scripts/cmus-status.sh
+!.config/scripts/twitch.sh
 
 !.bash_profile
 !.bashrc

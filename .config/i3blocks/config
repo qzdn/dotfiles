@@ -4,20 +4,22 @@ interval=3
 #color=#CCCCCC
 
 [WEATHER]
-command=curl "wttr.in/VOZ?format=1" | sed 's/   / /' | awk '{print " " $0 " "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec chromium gismeteo.ru
+command=curl "wttr.in/VOZ?format=1" | sed 's/   / /' | awk '{print " " $0 " "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec firefox gismeteo.ru
 interval=300
 color=#A4C2F4
 
 [CPU_TEMP]
-command=sensors | grep "Tctl" | awk '{print " \uf2c9: "$2" "}'
-interval=5
-color=#FF5555
+#command=sensors | grep "Tctl" | awk '{print " \uf2c9: "$2" "}'
+command=sensors | grep "Package id 0:" | awk '{print " \uf2c9: "$4" "}'
+interval=3
+#color=#FF5555
+color=#9999FF
 
-[GPU_TEMP]
+#[GPU_TEMP]
 #command=nvidia-settings -q GPUCoreTemp | grep -m 1 "Attribute 'GPUCoreTemp'" | awk '{print " \uf2c9 +" substr($4, 1, length($4)-1) "°C "}'
-command=nvidia-settings -q GPUCoreTemp -t | awk '{print " \uf2c9: +" $0 "°C "}'
-interval=5
-color=#22FF22
+#command=nvidia-settings -q GPUCoreTemp -t | awk '{print " \uf2c9: +" $0 "°C "}'
+#interval=5
+#color=#22FF22
 
 [MEM]
 command=free -h | grep "Mem" | awk '{print "  \uf538: "$3"/"$2" "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec st htop
@@ -35,6 +37,6 @@ interval=3
 color=#CCCCCC
 
 [TIME]
-command=date +" %d-%m-%Y :: %H:%M "; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
+command=date +" %d-%m-%Y :: %H:%M"; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
 interval=5
 color=#FFFFFF

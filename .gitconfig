@@ -1,7 +1,9 @@
 [user]
-	name = qzdn
-	email = 6467022+qzdn@users.noreply.github.com
+  name = qzdn
+  email = 6467022+qzdn@users.noreply.github.com
+  #signingKey = 
 [core]
-	editor = code
+  editor = vim
+  autocrlf = false
 [init]
-	defaultBranch = main
+  defaultBranch = main

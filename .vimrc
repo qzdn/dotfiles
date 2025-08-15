@@ -25,8 +25,8 @@ nnoremap <M-l> :tabnext<CR>
 
 nnoremap <M-Down> :bNext<CR>                                                                            
 nnoremap <M-Up> :bprevious<CR>
-nnoremap <M-j> :tabprevious<CR>                                                                            
-nnoremap <M-k> :tabnext<CR>
+nnoremap <M-j> :bNext<CR>                                                                            
+nnoremap <M-k> :bprevious<CR>
 
 nnoremap <M-F1> :Texplore<CR>
 

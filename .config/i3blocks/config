@@ -1,10 +1,10 @@
 [CMUS]
-command=~/.config/scripts/cmus-status.sh; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg workspace 5
+command=~/.config/scripts/cmus-status.sh
 interval=3
-#color=#CCCCCC
+color=#CCCCCC
 
 [WEATHER]
-command=curl "wttr.in/VOZ?format=1" | sed 's/   / /' | awk '{print " " $0 " "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec firefox gismeteo.ru
+command=curl "wttr.in/?format=1" | sed 's/   / /' | awk '{print " " $0 " "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec firefox gismeteo.ru
 interval=300
 color=#A4C2F4
 
@@ -22,7 +22,7 @@ color=#9999FF
 #color=#22FF22
 
 [MEM]
-command=free -h | grep "Mem" | awk '{print "  \uf538: "$3"/"$2" "}'; [[ -z "${BLOCK_BUTTON}" ]] || i3-msg -q exec st htop
+command=free -h | grep "Mem" | awk '{print "  \uf538: "$3"/"$2" "}'; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -e bash -c "htop; exec bash"
 interval=5
 color=#FEC925
 
@@ -31,9 +31,9 @@ command=df -h / | awk '/\//{ printf(" \uf0a0 : %s/%s \n", $4, $2) }'; [[ -z "${B
 interval=30
 color=#CCCCCC
 
-[KB_LAYOUT]
-command=xset -q | grep LED | awk '{if ($10>2) print " [ru] "; else print " [us] ";}'
-interval=3
+[KB_INDICATOR]
+command=~/.config/scripts/kb.sh
+interval=2
 color=#CCCCCC
 
 [TIME]

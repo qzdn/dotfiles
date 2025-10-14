@@ -20,6 +20,7 @@
 !.config/rofi/config.rasi
 !.config/scripts
 !.config/scripts/cmus-status.sh
+!.config/scripts/kb.sh
 !.config/scripts/twitch.sh
 
 !.bash_profile

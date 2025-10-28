@@ -20,6 +20,7 @@
 !.config/rofi/config.rasi
 !.config/scripts
 !.config/scripts/cmus-status.sh
+!.config/scripts/nvidia-fans.sh
 !.config/scripts/kb.sh
 !.config/scripts/twitch.sh
 
@@ -28,4 +29,5 @@
 !.gitconfig
 !.gitignore
 !.vimrc
+!.tmux.conf
 !.xinitrc

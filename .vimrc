@@ -1,3 +1,4 @@
+" -- Config --
 syntax on                      " Enable syntax highlighting
 set number                     " Show line numbers
 set relativenumber             " Show relative line numbers
@@ -25,7 +26,7 @@ set confirm                    " Ask for confirmation instead of error
 set hidden                     " Allow switching buffers without saving
 let g:netrw_liststyle = 3      " Tree-style view
 
-" === Hotkeys  ====
+" -- Hotkeys --
 let mapleader="\\"
 nnoremap <leader>. :Explore<CR>
 nnoremap <leader>f :find 

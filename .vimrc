@@ -1,4 +1,5 @@
 " -- Config --
+filetype plugin on             " Plugins for specific file types (md, ts, etc.)
 syntax on                      " Enable syntax highlighting
 set number                     " Show line numbers
 set relativenumber             " Show relative line numbers
@@ -28,11 +29,14 @@ let g:netrw_liststyle = 3      " Tree-style view
 
 " -- Hotkeys --
 let mapleader="\\"
-nnoremap <leader>. :Explore<CR>
 nnoremap <leader>f :find 
-
+nnoremap <leader>. :Explore<CR>
 nnoremap <leader>b :BufExplorer<CR>
-nnoremap <leader>q :bd<CR>     " Close buffer
+nnoremap <leader>q :bd<CR>f
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>p :bprevious<CR>
+
+" -- Char limit --
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=yellow
 

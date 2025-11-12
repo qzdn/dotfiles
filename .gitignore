@@ -1,5 +1,7 @@
 *
 
+!.proxychains/
+!.proxychains/proxychains.conf
 !.ssh/
 !.ssh/config
 !.config/
@@ -7,27 +9,33 @@
 !.config/alacritty/alacritty.toml
 !.config/dunst/
 !.config/dunst/dunstrc
+!.config/feh/
+!.config/feh/buttons
 !.config/gtk-*.0/
 !.config/gtk-*.0/settings.ini
 !.config/i3*/
 !.config/i3*/config
 !.config/picom/
+!.config/picom/picom.conf
 !.config/pcmanfm/
 !.config/pcmanfm/default/
 !.config/pcmanfm/default/pcmanfm.conf
-!.config/picom/picom.conf
 !.config/rofi/
 !.config/rofi/config.rasi
-!.config/scripts
+!.config/scripts/
 !.config/scripts/cmus-status.sh
 !.config/scripts/nvidia-fans.sh
 !.config/scripts/kb.sh
 !.config/scripts/twitch.sh
+!.config/scripts/yt2mpv.sh
+!.config/tmux/
+!.config/tmux/tmux.conf
+!.config/yt-dlp/
+!.config/yt-dlp/config
 
 !.bash_profile
 !.bashrc
 !.gitconfig
 !.gitignore
 !.vimrc
-!.tmux.conf
 !.xinitrc

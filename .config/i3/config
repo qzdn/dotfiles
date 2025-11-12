@@ -2,8 +2,11 @@
 set $mod Mod4
 
 hide_edge_borders both
-#focus_follows_mouse no
-#mouse_warping none
+default_border normal 1
+#gaps inner 1
+#gaps outer 1
+focus_follows_mouse no
+mouse_warping none
 
 #font pango:monospace 8
 font pango:JetBrainsMonoNL NF 8 
@@ -49,7 +52,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
+#bindsym $mod+Return exec xterm -xrm 'XTerm*selectToClipboard: true' -xrm '*VT100*translations: #override \n\ Ctrl <KeyPress> Insert: copy-selection(CLIPBOARD) \n\ Shift <KeyPress> Insert: insert-selection(CLIPBOARD)' -fa "JetBrainsMonoNerdFontMono-Regular" -fg "white" -fs "9" -bg "#131313"
+bindsym $mod+Return exec alacritty
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec st
 
@@ -146,6 +150,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # assign apps to workspaces
 assign [class="firefox"] $ws1
+assign [class="code-oss"] $ws2
 
 # floating by default
 for_window [class="firefox" instance="Devtools"] floating enable

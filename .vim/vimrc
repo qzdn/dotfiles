@@ -1,0 +1,106 @@
+" -- Config --
+filetype plugin on                    " Plugins for specific file types (md, ts, etc.)
+syntax on                             " Enable syntax highlighting
+
+colorscheme habamax
+set guifont=JetBrainsMonoNLNF\ 9
+set guioptions-=m                     " Disable menu bar
+set guioptions-=T                     " ... toolbar
+set guioptions-=r                     " ... scrollbar
+set guioptions-=L                     " ... scrollbar (left)
+
+set timeoutlen=1000 ttimeoutlen=0
+let g:netrw_liststyle = 3             " Tree-style view
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=yellow
+
+set number                            " Show line numbers
+set relativenumber                    " Show relative line numbers
+set expandtab                         " Use spaces instead of tabs
+set shiftwidth=2                      " Auto-indent width
+set tabstop=2                         " Tab width
+set smartindent                       " Enable smart indentation
+set cindent                           " Better C/C++ indentation
+set smarttab                          " Tab respects shiftwidth
+set linebreak                         " Wrap lines at word boundaries
+set showmatch                         " Highlight matching brackets
+set mouse=a                           " Enable mouse support
+set hlsearch                          " Highlight search matches
+set incsearch                         " Show incremental search results
+set ignorecase                        " Case-insensitive search
+set list                              " Show whitespace characters
+set listchars=tab:··                  " Display tabs as dots
+set path+=**                          " Enable recursive file search
+set wildmenu                          " Enhanced command-line completion
+set wildmode=longest:full,full        " Completion mode
+set omnifunc=syntaxcomplete#Complete  " Omni completion
+set scrolloff=5                       " Keep cursor centered with margin
+set showmode                          " Show current mode (e.g., INSERT)
+set showcmd                           " Display incomplete commands
+set confirm                           " Ask for confirmation instead of error
+set hidden                            " Allow switching buffers without saving
+
+" -- Status line --
+" https://shapeshed.com/vim-statuslines/
+" Get current branch name
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+" Check uncommited changes
+function! GitStatus()
+  let l:status = system("git status --porcelain 2>/dev/null")
+  return strlen(l:status) > 0 ? '[+]' : '[=]'
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  if strlen(l:branchname) > 0
+    let l:status = GitStatus()
+    return '  ' . l:branchname . ' ' . l:status . ' '
+  endif
+  return ''
+endfunction
+
+set laststatus=2
+set statusline=
+set statusline+=%#PmenuSel#                                " Git part color
+set statusline+=%{StatuslineGit()}                         " Git status
+set statusline+=%#LineNr#                                  " Main part color
+set statusline+=\ %F                                       " File path
+set statusline+=\ [%n\]                                    " Buffer number
+set statusline+=%m\                                        " [+], if file was changed
+set statusline+=%r\                                        " [RO], if file is read-only
+set statusline+=%=                                         " Delimeter (right)
+set statusline+=%#CursorColumn#                            " Right part color
+set statusline+=\ %y                                       " Detected extension [js,rs...]
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding} " Encoding (utf-8)
+set statusline+=\[%{&fileformat}\]                         " FIle format [unix/dos/mac]
+set statusline+=\ [%p%%]                                   " Scroll amount [%]
+set statusline+=\ [%l:%c\]                                 " Position [row:col]
+
+" -- Hotkeys --
+let mapleader="\\"
+
+" Omni (smart?) completion, <C-n> for keyword completion
+inoremap <C-@> <C-x><C-o>
+
+" Recursive file search for opening
+nnoremap <leader>f :find 
+
+" Built-in file explorer
+nnoremap <leader>. :Explore<CR>
+
+" Print buffers list
+nnoremap <leader>b :ls<CR>
+
+" Buffers list (through bufexplorer ext)
+"nnoremap <leader>b :BufExplorer<CR>
+
+" Close buffer
+nnoremap <leader>c :bd<CR>f
+
+" Switch buffer
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>p :bprevious<CR>
+

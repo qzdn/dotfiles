@@ -17,7 +17,6 @@ exec_always --no-startup-id setxkbmap -option '' && setxkbmap -model pc105 -layo
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id feh --no-fehbg --bg-fill --randomize $HOME/Pictures/Wallpapers
 exec --no-startup-id nm-applet
-exec --no-startup-id volapplet -i -s -c
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd 
 #exec --no-startup-id lantern-headless start --socks-proxy-addr 127.0.0.1:1080 --http-proxy-addr 127.0.0.1:8080 
 #exec --no-startup-id keepassxc --keyfile $HOME/pwd.kdbx
@@ -54,6 +53,7 @@ tiling_drag modifier titlebar
 # start a terminal
 #bindsym $mod+Return exec xterm -xrm 'XTerm*selectToClipboard: true' -xrm '*VT100*translations: #override \n\ Ctrl <KeyPress> Insert: copy-selection(CLIPBOARD) \n\ Shift <KeyPress> Insert: insert-selection(CLIPBOARD)' -fa "JetBrainsMonoNerdFontMono-Regular" -fg "white" -fs "9" -bg "#131313"
 bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec st
 
@@ -151,6 +151,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign apps to workspaces
 assign [class="firefox"] $ws1
 assign [class="code-oss"] $ws2
+assign [class="Gvim"] $ws2
 
 # floating by default
 for_window [class="firefox" instance="Devtools"] floating enable

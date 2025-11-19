@@ -1,2 +1,2 @@
- --remote-components ejs:github
- --cookies-from-browser firefox
+--remote-components ejs:github
+--cookies-from-browser firefox

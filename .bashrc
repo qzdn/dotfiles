@@ -9,9 +9,12 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias lss='ls -lahs --group-directories-first --color=auto'
 
-export PATH=$PATH:$HOME/.config/scripts
+export PATH=$PATH:$HOME/.config/scripts:$HOME/.config/scripts/yt.sh
 export EDITOR='/usr/bin/vim'
 export GIT_EDITOR='/usr/bin/vim'
+
+# KB Layout
+setxkbmap -option '' && setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle -option caps:escape
 
 # Autoload ssh keys
 eval $(keychain --eval --quiet)

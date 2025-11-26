@@ -2,7 +2,7 @@
 filetype plugin on                    " Plugins for specific file types (md, ts, etc.)
 syntax on                             " Enable syntax highlighting
 
-colorscheme habamax
+colorscheme sorbet
 set guifont=JetBrainsMonoNLNF\ 9
 set guioptions-=m                     " Disable menu bar
 set guioptions-=T                     " ... toolbar
@@ -24,7 +24,6 @@ set cindent                           " Better C/C++ indentation
 set smarttab                          " Tab respects shiftwidth
 set linebreak                         " Wrap lines at word boundaries
 set showmatch                         " Highlight matching brackets
-set mouse=a                           " Enable mouse support
 set hlsearch                          " Highlight search matches
 set incsearch                         " Show incremental search results
 set ignorecase                        " Case-insensitive search

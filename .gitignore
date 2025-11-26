@@ -16,7 +16,6 @@
 !.config/scripts/nvidia-fans.sh
 !.config/scripts/kb.sh
 !.config/scripts/twitch.sh
-!.config/scripts/yt2mpv.sh
 !.config/tmux/tmux.conf
 !.config/yt-dlp/config
 

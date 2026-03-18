@@ -2,6 +2,7 @@
 
 !.proxychains/proxychains.conf
 !.ssh/config
+!.emacs.d/init.el 
 !.vim/vimrc
 !.vim/pack/plugins/start
 !.config/alacritty/alacritty.toml
@@ -21,7 +22,6 @@
 
 !.bash_profile
 !.bashrc
-!.emacs
 !.gitconfig
 !.gitignore
 !.xinitrc

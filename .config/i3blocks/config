@@ -37,6 +37,6 @@ interval=2
 color=#CCCCCC
 
 [TIME]
-command=date +" %d-%m-%Y :: %H:%M"; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
+command=date +" %d-%m-%Y :: %H:%M:%S"; [[ -z "${BLOCK_BUTTON}" ]] || alacritty -t Calendar -e bash -c "date; cal -m -w -y; exec bash" 
 interval=5
 color=#FFFFFF

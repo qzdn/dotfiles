@@ -1,14 +1,26 @@
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(setq tab-always-indent 'complete)
+
+;; Emacs Vi mode
 (require 'evil)
-(evil-mode 1) 
+(evil-mode 1)
+(evil-set-undo-system 'undo-redo)
 
 ;; Visuals
-(load-theme 'tango-dark)
-(set-frame-font "JetBrainsMonoNLNF 10" nil t)
+(load-theme 'naysayer)
+(set-frame-font "IosevkaTermNerdFont 10" nil t)
+;;(set-frame-font "JetBrainsMonoNLNF 9" nil t)
 (global-font-lock-mode 1)
 (setq font-lock-maximum-decoration t)
 (add-hook 'prog-mode-hook 'font-lock-mode)
 (add-hook 'text-mode-hook 'font-lock-mode)
 (show-paren-mode 1)
+(set-fringe-mode 0)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 ;; Line numbers
 (global-visual-line-mode t)
@@ -50,7 +62,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil-visual-mark-mode magit)))
+ '(custom-safe-themes
+   '("09276f492e8e604d9a0821ef82f27ce58b831f90f49f986b4d93a006c12dbcdb"
+     default))
+ '(package-selected-packages
+   '(evil-collection evil-org evil-visual-mark-mode magit magit-ido
+                     markdown-mode naysayer-theme org-modern)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

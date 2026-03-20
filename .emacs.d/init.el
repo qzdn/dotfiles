@@ -1,73 +1,112 @@
+;; melpa.org repo
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(setq tab-always-indent 'complete)
+;; Auto install on new system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(dolist (pkg '(evil evil-collection evil-mc evil-org magit org-modern))
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
-;; Emacs Vi mode
+;; Evil-mode
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
 (evil-set-undo-system 'undo-redo)
+(require 'evil-collection)
+(evil-collection-init)
+(require 'evil-mc)
+(setq evil-mc-key-map-prefix "g.")
+(global-evil-mc-mode 1)
+
+;; Org-mode
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
+
+(with-eval-after-load 'org
+  (setq org-capture-templates
+    '(("t" "Task" entry
+       (file+headline "~/org/tasks.org" "Tasks")
+       "* TODO %?\n  SCHEDULED: %t\n  /Description/")
+      ("n" "Note" entry
+       (file+headline "~/org/notes.org" "Notes")
+       "* %?\n  %U\n")))
+  (setq org-directory "~/org/")
+  (setq org-agenda-files '("~/org/"))
+  (setq org-log-done 'time)             ; CLOSED: timestamp after completion
+  (setq org-deadline-warning-days 3)
+  (setq org-hide-emphasis-markers t)
+  (setq org-todo-keywords
+        '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELLED")))
+  (require 'org-modern)
+  (global-org-modern-mode))
+
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "C-c l") #'org-store-link)
+
+(setq calendar-week-start-day 1)
 
 ;; Visuals
-(load-theme 'naysayer)
-(set-frame-font "IosevkaTermNerdFont 10" nil t)
-;;(set-frame-font "JetBrainsMonoNLNF 9" nil t)
+(load-theme 'wombat :no-confirm)
+(add-to-list 'default-frame-alist '(font . "IosevkaTermNerdFont-10"))
+
 (global-font-lock-mode 1)
 (setq font-lock-maximum-decoration t)
-(add-hook 'prog-mode-hook 'font-lock-mode)
-(add-hook 'text-mode-hook 'font-lock-mode)
+
 (show-paren-mode 1)
 (set-fringe-mode 0)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
+(setq tab-always-indent 'complete)
 
-;; Line numbers
+;; UI
 (global-visual-line-mode t)
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
-(column-number-mode 1) 
+(column-number-mode 1)
 
-;; Disable startup splash screen and other stuff
 (setq inhibit-startup-screen t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
-;; Aufofocus
-(global-set-key (kbd "C-x C-b") (lambda () (interactive) (buffer-menu) (other-window 0)))
-(global-set-key (kbd "C-x 3") (lambda () (interactive) (split-window-right) (other-window 1)))
-(global-set-key (kbd "C-x 2") (lambda () (interactive) (split-window-below) (other-window 1)))
+;; Behaviour
 (setq help-window-select t)
 (setq compilation-scroll-output t)
+(setq auto-save-default nil)
 
-;; Cool completion mode
+;; Autofocus
+(global-set-key (kbd "C-x C-b")
+                (lambda () (interactive) (buffer-menu) (other-window 0)))
+(global-set-key (kbd "C-x 3")
+                (lambda () (interactive) (split-window-right) (other-window 1)))
+(global-set-key (kbd "C-x 2")
+                (lambda () (interactive) (split-window-below) (other-window 1)))
+
+;; Completion
 (ido-mode 1)
 (ido-everywhere 1)
 
-;; Disable auto-save and add config autoreloading
-(setq auto-save-default nil)
-
+;; Config autoreload
 (defun my/reload-config-file ()
-  "Reload config file if it's the current buffer."
   (when (string= (buffer-file-name) (file-truename user-init-file))
-    (message "Reloading config file...")
     (load-file user-init-file)
-    (message "Config file reloaded successfully!")))
-
-(add-hook 'after-save-hook 'my/reload-config-file)
-
+    (message "Config reloaded.")))
+(add-hook 'after-save-hook #'my/reload-config-file)
+ 
+;; Autocrap
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("09276f492e8e604d9a0821ef82f27ce58b831f90f49f986b4d93a006c12dbcdb"
-     default))
- '(package-selected-packages
-   '(evil-collection evil-org evil-visual-mark-mode magit magit-ido
-                     markdown-mode naysayer-theme org-modern)))
+ '(package-selected-packages '(evil evil-collection evil-mc evil-org magit org-modern)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

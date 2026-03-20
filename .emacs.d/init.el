@@ -1,13 +1,13 @@
 ;; melpa.org repo
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Auto install on new system
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
-(dolist (pkg '(evil evil-collection evil-mc evil-org magit org-modern))
+(dolist (pkg '(evil evil-org org-modern magit))
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
@@ -16,11 +16,6 @@
 (require 'evil)
 (evil-mode 1)
 (evil-set-undo-system 'undo-redo)
-(require 'evil-collection)
-(evil-collection-init)
-(require 'evil-mc)
-(setq evil-mc-key-map-prefix "g.")
-(global-evil-mc-mode 1)
 
 ;; Org-mode
 (require 'evil-org)
@@ -106,7 +101,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil evil-collection evil-mc evil-org magit org-modern)))
+ '(package-selected-packages '(evil evil-org org-modern magit))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

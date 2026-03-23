@@ -10,7 +10,7 @@ mouse_warping none
 
 #font pango:monospace 8
 #font pango:JetBrainsMonoNL NF 8 
-font pango:IosevkaTerm Nerd Font 9
+font pango:Iosevka NFM 9
 
 # Autorun
 exec_always --no-startup-id setxkbmap -option '' && setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle -option caps:escape
@@ -67,7 +67,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 #bindsym $mod+d exec --no-startup-id rofi -show drun -font "JetBrainsMonoNL NF 8"
-bindsym $mod+d exec --no-startup-id rofi -show drun -font "IosevkaTerm Nerd Font 9"
+bindsym $mod+d exec --no-startup-id rofi -show drun -font "Iosevka NFM 9"
 
 # change focus
 bindsym $mod+j focus left

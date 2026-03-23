@@ -16,6 +16,10 @@
 (require 'evil)
 (evil-mode 1)
 (evil-set-undo-system 'undo-redo)
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 ;; Org-mode
 (require 'evil-org)
@@ -47,12 +51,20 @@
 
 (setq calendar-week-start-day 1)
 
-;; Visuals
-(load-theme 'wombat :no-confirm)
-(add-to-list 'default-frame-alist '(font . "IosevkaTermNerdFont-10"))
+;; Completion
+(ido-mode 1)
+(ido-everywhere 1)
 
+;; Visuals and UI
+(load-theme 'wombat :no-confirm)
+(add-to-list 'default-frame-alist '(font . "IosevkaNFM-10"))
 (global-font-lock-mode 1)
 (setq font-lock-maximum-decoration t)
+
+(setq inhibit-startup-screen t)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
 
 (show-paren-mode 1)
 (set-fringe-mode 0)
@@ -60,16 +72,14 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
 
-;; UI
 (global-visual-line-mode t)
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 (column-number-mode 1)
 
-(setq inhibit-startup-screen t)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
+(blink-cursor-mode 1)
+(setq blink-cursor-blinks -1)
+(setq blink-cursor-interval 0.33)
 
 ;; Behaviour
 (setq help-window-select t)
@@ -84,10 +94,6 @@
 (global-set-key (kbd "C-x 2")
                 (lambda () (interactive) (split-window-below) (other-window 1)))
 
-;; Completion
-(ido-mode 1)
-(ido-everywhere 1)
-
 ;; Config autoreload
 (defun my/reload-config-file ()
   (when (string= (buffer-file-name) (file-truename user-init-file))
@@ -101,7 +107,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil evil-org org-modern magit))
+ '(package-selected-packages '(evil evil-org org-modern magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

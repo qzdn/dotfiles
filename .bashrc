@@ -28,5 +28,4 @@ eval $(keychain --eval --quiet)
 
 # Show tasks
 cal -n 3 -m -v && echo "---" && date && echo "---"
-cat $HOME/Documents/tasks.txt
 
